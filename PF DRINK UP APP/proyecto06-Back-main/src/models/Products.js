@@ -55,8 +55,8 @@ module.exports = (sequelize) => {
       sells: {
         type: DataTypes.INTEGER,
       },
-      images: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+      image: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
       description: {

@@ -2,16 +2,12 @@ const { Products } = require("../db");
 
 const putProduct = async (req, res) => {
     try {
-      const { productId, changes } = req.body;
-  
-      const product = await Products.findByPk(productId);
-  
-      if (product !== null) {
-        for (const change of changes) {
-          const { name, data } = change;
-          product[name] = data;
+      const changes = req.body;
+      const product = await Products.findByPk(changes.id);
+      if (product) {
+        for (const key in changes) {
+          product[key] = changes[key];
         }
-  
         await product.save();
   
         res.send(product);
